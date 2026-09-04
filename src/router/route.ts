@@ -7,19 +7,25 @@ export const mainRoute = [
 			title: '登录页'
 		}
 	},
-	{
-		
-		meta: {
-			title: '首页'
-		},
-	}
 ]
-export const constantRoute = [
+export const dynamicRoute = [
 	{
 		path: '/layout',
 		name: 'Layout',
 		component: () => import('@/layout/index.vue'),
+		meta: {
+			breadcrumb: false,
+		},
+		redirect: '/home',
 		children: [
+			{
+				path: '/home',
+				name: 'Home',
+				component: () => import('@/views/Home/index.vue'),
+				meta: {
+					title: '首页'
+				}
+			},
 			{
 				path: '/paginationTest',
 				name: 'PaginationTest',
@@ -39,9 +45,53 @@ export const constantRoute = [
 			{
 				path: '/popoverTest',
 				name: 'PopoverTest',
-				component: () => import('@/views/ContentPage/PopoverTest.vue'),
+				component: () => import('@/layout/routerView/parent.vue'),
 				meta: {
 					title: '弹出框'
+				}
+			},
+			{
+				path: '/echart',
+				name: 'Echart',
+				component: () => import('@/layout/routerView/parent.vue'),
+				redirect: '/pie',
+				meta: {
+					title: 'echart图表',
+					isLink: false
+				},
+				children: [
+					{
+						path: '/pie',
+						name: 'Pie',
+						component: () => import('@/views/Echarts/Pie.vue'),
+						meta: {
+							title: '饼图'
+						}
+					},
+					{
+						path: '/line',
+						name: 'Line',
+						component: () => import('@/views/Echarts/Line.vue'),
+						meta: {
+							title: '折线图'
+						}
+					},
+					{
+						path: '/bar',
+						name: 'Bar',
+						component: () => import('@/views/Echarts/Bar.vue'),
+						meta: {
+							title: '柱状图'
+						}
+					},
+				]
+			},
+			{
+				path: '/personInfo',
+				name: 'PersonInfo',
+				component: () => import('@/views/PersonInfo/index.vue'),
+				meta: {
+					title: '个人中心'
 				}
 			}
 		]

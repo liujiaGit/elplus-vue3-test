@@ -61,7 +61,7 @@
 					let userInfo = JSON.stringify(params)
 					localStorage.setItem('userInfo',userInfo)
 		      //调接口
-					$router.push({path:'/layout'})
+					$router.replace({path:'/layout'})
 		    } else {
 		      alert('请输入正确信息!')
 		    }

@@ -10,10 +10,10 @@
 
 <script setup>
 	import {useRouter} from 'vue-router'
-	import {constantRoute} from '@/router/route.js'
+	import {dynamicRoute} from '@/router/route.js'
 	
 	let $router = useRouter()
-	let menuList = constantRoute[0].children
+	let menuList = dynamicRoute[0].children
 </script>
 
 <style scoped>

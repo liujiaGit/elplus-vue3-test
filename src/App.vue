@@ -1,6 +1,6 @@
 <script setup lang="ts">
-	import "@/assets/css/styles.css";
-	import "@/assets/css/common.css";
+	import '@/assets/css/common.css'
+	import '@/assets/css/styles.css'
 </script>
 
 <template>

@@ -25,17 +25,16 @@
 
 <style scoped>
 	.el-aside{
-		width: 20vw;
+		width: 12vw;
 		height: 100vh;
 		background-color: #545c64;
-		opacity: 0.7;
 	}
 	.el-header{
-		width: 80vw;
+		width: 88vw;
 		height: 10vh;
 	}
 	.el-main{
-		width: 80vw;
+		width: 88vw;
 		height: 90vh;
 	}
 </style>
