@@ -1,4 +1,7 @@
-export const mainRoute = [
+import type { RouteRecordRaw } from 'vue-router'
+
+// 静态路由
+export const mainRoute : Array<RouteRecordRaw> = [
 	{
 		path: '/',
 		name: 'Login',
@@ -8,13 +11,15 @@ export const mainRoute = [
 		}
 	},
 ]
-export const dynamicRoute = [
+// 动态路由
+export const dynamicRoute : Array<RouteRecordRaw> = [
 	{
 		path: '/layout',
 		name: 'Layout',
 		component: () => import('@/layout/index.vue'),
 		meta: {
 			breadcrumb: false,
+			role: ['01', '02'],
 		},
 		redirect: '/home',
 		children: [
@@ -23,7 +28,10 @@ export const dynamicRoute = [
 				name: 'Home',
 				component: () => import('@/views/Home/index.vue'),
 				meta: {
-					title: '首页'
+					title: '首页',
+					affix: true, // 🔒 固定标记
+					icon: 'HomeFilled',
+					role: ['01', '02'],// 01-system ,02-admin
 				}
 			},
 			{
@@ -31,7 +39,9 @@ export const dynamicRoute = [
 				name: 'PaginationTest',
 				component: () => import('@/views/ContentPage/PaginationTest/index.vue'),
 				meta: {
-					title: '分页'
+					title: '分页',
+					icon: 'House',
+					role: ['01', '02'],
 				}
 			},
 			{
@@ -39,7 +49,9 @@ export const dynamicRoute = [
 				name: 'TreeSelect',
 				component: () => import('@/views/ContentPage/TreeSelect.vue'),
 				meta: {
-					title: '树形选择'
+					title: '树形选择',
+					icon: 'Operation',
+					role: ['01', '02'],
 				}
 			},
 			{
@@ -47,7 +59,9 @@ export const dynamicRoute = [
 				name: 'PopoverTest',
 				component: () => import('@/layout/routerView/parent.vue'),
 				meta: {
-					title: '弹出框'
+					title: '弹出框',
+					icon: 'Notification',
+					role: ['01'],
 				}
 			},
 			{
@@ -57,7 +71,9 @@ export const dynamicRoute = [
 				redirect: '/pie',
 				meta: {
 					title: 'echart图表',
-					isLink: false
+					isLink: false,
+					icon: 'Guide',
+					role: ['01', '02'],
 				},
 				children: [
 					{
@@ -65,7 +81,9 @@ export const dynamicRoute = [
 						name: 'Pie',
 						component: () => import('@/views/Echarts/Pie.vue'),
 						meta: {
-							title: '饼图'
+							title: '饼图',
+							icon: 'Postcard',
+							role: ['01', '02'],
 						}
 					},
 					{
@@ -73,7 +91,9 @@ export const dynamicRoute = [
 						name: 'Line',
 						component: () => import('@/views/Echarts/Line.vue'),
 						meta: {
-							title: '折线图'
+							title: '折线图',
+							icon: 'Postcard',
+							role: ['01', '02'],
 						}
 					},
 					{
@@ -81,7 +101,9 @@ export const dynamicRoute = [
 						name: 'Bar',
 						component: () => import('@/views/Echarts/Bar.vue'),
 						meta: {
-							title: '柱状图'
+							title: '柱状图',
+							icon: 'Postcard',
+							role: ['01', '02'],
 						}
 					},
 				]
@@ -91,9 +113,11 @@ export const dynamicRoute = [
 				name: 'PersonInfo',
 				component: () => import('@/views/PersonInfo/index.vue'),
 				meta: {
-					title: '个人中心'
+					title: '个人中心',
+					icon: 'User',
+					role: ['01', '02'],
 				}
-			}
+			},
 		]
-	}
+	},
 ]

@@ -1,9 +1,16 @@
 <template>
-	折线图
+	<div id="main" class="line-test"></div>
 </template>
 
 <script setup>
+	
+	const testLine = ()=>{
+		
+	}
 </script>
 
-<style>
+<style scoped>
+.line-test{
+	background-color: #ffffff;
+}
 </style>

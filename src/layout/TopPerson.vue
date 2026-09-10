@@ -14,19 +14,24 @@
 </template>
 
 <script setup>
-	import {useRouter} from 'vue-router';
+	import {
+		useRouter
+	} from 'vue-router';
+	import {
+		useUserStore
+	} from '@/stores/user';
 
-	let router = useRouter()
+	const userStore = useUserStore()
+	let $router = useRouter()
 	let userInfo = JSON.parse(localStorage.getItem('userInfo'))
 	let username = userInfo.username
 
-	// 退出登录
-	const toLogin = () => {
-		localStorage.removeItem('userInfo')
-		router.push('/')
-	}
 	const toPerson = () => {
-		router.push('/personInfo')
+		$router.push('/personInfo')
+	}
+	const toLogin = async () => {
+		await userStore.logOut()
+		$router.push('/')
 	}
 </script>
 
@@ -35,7 +40,7 @@
 		font-size: 16px;
 		margin-bottom: 10px;
 	}
-	
+
 	.wel img {
 		width: 40px;
 		height: 40px;
@@ -47,13 +52,13 @@
 		/* 轻微阴影增加立体感 */
 		vertical-align: middle;
 	}
-	
+
 	.wel-name {
 		font-size: 20px;
 		color: red;
 		padding: 0 10px;
 	}
-	
+
 	.wel-title {
 		font-size: 16px;
 		padding-top: 10px;

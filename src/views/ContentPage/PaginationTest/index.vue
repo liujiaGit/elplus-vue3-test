@@ -86,7 +86,7 @@
 				branchId: row.branchId
 			}
 			BranchApi.deleteBranchById(param).then((res)=>{
-				if(res.code === "200"){
+				if(res.code === '200'){
 					ElMessage.success('删除成功！')
 					getBranchPageList()
 				}

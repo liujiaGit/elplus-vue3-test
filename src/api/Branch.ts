@@ -1,4 +1,3 @@
-import Qs from 'qs';
 import { httpApi } from '@/service/request.ts';
 
 export const BranchApi = {

@@ -1,20 +1,19 @@
 <template>
 	<div class="header-page">
-		<BreadCrumb />
-		<TopPerson />
+		<BreadCrumb class="float-left"/>
+		<TopPerson class="float-right"/>
 	</div>
+	<TabsBar class="tabs-bar"/>
 </template>
 
 <script setup>
 	import BreadCrumb from '@/components/BreadCrumb.vue'
 	import TopPerson from './TopPerson.vue'
-	
+	import TabsBar from '@/components/tabsBar.vue'
 </script>
 
 <style scoped>
-	.header-page{
-		margin-top: 20px;
-		display: flex;
-		justify-content: space-between;
+	.tabs-bar{
+		width: 100%;
 	}
 </style>

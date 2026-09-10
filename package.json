@@ -13,8 +13,10 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "axios": "^1.18.1",
+    "echarts": "^6.1.0",
     "element-plus": "^2.14.2",
     "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
     "qs": "^6.15.3",
     "scss": "^0.2.4",
     "unplugin-auto-import": "^21.0.0",

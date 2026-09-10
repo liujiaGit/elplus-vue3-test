@@ -13,6 +13,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('./src/components/Breadcrumb.vue')['default']
     BreadCrumb: typeof import('./src/components/BreadCrumb.vue')['default']
+    Circle: typeof import('./src/components/Circle.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
@@ -46,8 +47,12 @@ declare module 'vue' {
     ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
     ElUser: typeof import('element-plus/es')['ElUser']
     IEpArrowDown: typeof import('~icons/ep/arrow-down')['default']
+    IEpExpand: typeof import('~icons/ep/expand')['default']
+    IEpFold: typeof import('~icons/ep/fold')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SubItem: typeof import('./src/components/SubItem.vue')['default']
+    TabsBar: typeof import('./src/components/tabsBar.vue')['default']
+    TestLine: typeof import('./src/components/TestLine.vue')['default']
   }
 }

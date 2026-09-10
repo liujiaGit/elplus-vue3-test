@@ -1,10 +1,10 @@
-import Qs from 'qs';
-import { request } from '@/service/request';
+import { httpApi } from '@/service/request';
 
-export function SysUser() {
-	return {
-		getUserPageList: (param) => {
-			request.httpPost('/sysUser/pageList', Qs.stringify(param))
-		}
+export const SysUserApi = {
+	getUserPageList: (param : {}) => {
+		return httpApi.post('/api/sysUser/pageList', param)
+	},
+	loginCheck: (param : {}) => {
+		return httpApi.post('/api/sysUser/login', param)
 	}
 }

@@ -4,3 +4,11 @@
 .float-right {
 	float: right;
 }
+.bg-color{
+	background-color: #ffffff;
+	border: 1px #f0f2f4 solid;
+}
+.flex-center{
+	display: flex;
+	justify-content: space-between;
+}
