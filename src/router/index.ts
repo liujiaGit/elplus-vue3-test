@@ -52,6 +52,7 @@ export function resetRouter() {
 	dynamicRoutesAdded = []
 }
 
+let isRoutesAdded = false //是否已经添加动态路由
 router.beforeEach(async (to, from) => {
 	document.title = to.meta.title as string
 	const userStore = useUserStore()
@@ -61,14 +62,15 @@ router.beforeEach(async (to, from) => {
 		return '/'
 	}
 	// 如果 token 存在但动态路由未添加，则尝试添加
-	if (token && !userStore.isRoutesAdded) {
-		const role = localStorage.getItem('role')
+	if (token && !isRoutesAdded) {
+		const userInfoStr = localStorage.getItem('userInfo')
+		const userInfo = userInfoStr ? JSON.parse(userInfoStr):null
 		let asyncRoute:RouteRecordRaw[] = []
-		console.log("role")
-		if (role) {
-			asyncRoute = filterRoutesByRoles(dynamicRoute, role)
-			
-			localStorage.setItem('asyncRoute',JSON.stringify(asyncRoute))
+		console.log("role===="+userInfo.role)
+		if (userInfo.role) {
+			asyncRoute = filterRoutesByRoles(dynamicRoute, userInfo.role)
+			userStore.asyncRoutesList = asyncRoute
+			// localStorage.setItem('asyncRoute',JSON.stringify(asyncRoute))
 		}
 		if (asyncRoute.length > 0) {
 			console.log("-------开始添加动态路由-------")
@@ -79,7 +81,7 @@ router.beforeEach(async (to, from) => {
 				}
 			})
 		}
-		userStore.isRoutesAdded = true
+		isRoutesAdded = true
 		// 如果当前在登录页，跳转到主布局
 		if (from.path === '/') {
 			return '/layout'

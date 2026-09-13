@@ -1,3 +1,4 @@
+import type { ApiResponse } from '@/types/index';
 import axios from 'axios';
 
 // 创建axios实例
@@ -29,7 +30,7 @@ service.interceptors.request.use(
 )
 // 响应拦截器
 service.interceptors.response.use(
-	response => {
+	(response:ApiResponse) => {
 		//  处理后端返回的业务数据（根据实际后端响应结构调整）
 		if (response.status === 200) {
 			return response.data; // 返回业务数据
