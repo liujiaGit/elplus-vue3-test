@@ -36,17 +36,20 @@
 		pwd: ''
 	})
 	// 登录
-	const login = (formVal) => {
-		// console.log("formVal==="+JSON.stringify(formVal))
+	const login = async (formVal) => {
 		if (formVal.userName !== '' && formVal.pwd !== '') {
 			let params = {
 				...formVal
 			}
 			//调接口
 			const userStore = useUserStore()
-			userStore.login(params)
+			await userStore.login(params)
+			$router.replace('/layout')
 		} else {
-			alert('请输入正确信息!')
+			ElMessage({
+				type:'error',
+				message:'请输入正确信息!'
+			})
 		}
 	}
 

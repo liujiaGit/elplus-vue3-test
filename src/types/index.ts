@@ -1,3 +1,5 @@
+import type { AxiosRequestConfig, AxiosResponse } from "axios"
+
 export interface UserInfo {
 	token: string,
 	userNo: string,
@@ -14,10 +16,11 @@ export interface TabItem {
 	query ?: Record<string, any>
 }
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = any, D = any> {
 	code: string,
 	data: T,
 	msg: string,
+	config: AxiosRequestConfig<D>;
 }
 
 export interface RouteItem<T = any> {
