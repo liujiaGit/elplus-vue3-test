@@ -1,8 +1,7 @@
-import Qs from 'qs';
 import { httpApi } from '@/service/request.ts';
 
 export const DataInfoApi = {
-	getDataInfoPageList(param:{}) {
-		return httpApi.post('/api/theTableInfoData/list', param)
+	getDataInfoPageList(param:string) {
+		return httpApi.get('/api/theTableInfoData/list', param)
 	},
 }

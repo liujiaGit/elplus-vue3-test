@@ -98,14 +98,13 @@
 	const tableData = ref([])
 	const currentPage = ref(1) // 当前页
 	const total = ref(0) // 总条数
-	const pageSize = ref(1) // 每页几条数据
+	const pageSize = ref(5) // 每页几条数据
 	const getBranchPageList = BranchApi.getBranchPageList().then((res) => {
 		const reponseInfo = res.data
 		if (res.code === "200") {
 			tableData.value = reponseInfo.list
 			total.value = reponseInfo.total
 			currentPage.value = reponseInfo.pageNum
-			pageSize.value = reponseInfo.pageSize
 		} else {
 			ElMessage.error(res.msg)
 		}

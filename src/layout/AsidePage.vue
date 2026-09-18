@@ -33,7 +33,7 @@
 
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
-import SubItem from '@/components/SubItem.vue'
+import SubItem from './SubItem.vue'
 import { useFlagStore } from '@/stores/flag.ts'
 // 导入所有 Element Plus 图标
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'

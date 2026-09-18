@@ -7,9 +7,9 @@
 </template>
 
 <script setup>
-	import BreadCrumb from '@/components/BreadCrumb.vue'
+	import BreadCrumb from './BreadCrumb.vue'
 	import TopPerson from './TopPerson.vue'
-	import TabsBar from '@/components/tabsBar.vue'
+	import TabsBar from './tabsBar.vue'
 </script>
 
 <style scoped>

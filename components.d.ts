@@ -49,6 +49,7 @@ declare module 'vue' {
     IEpArrowDown: typeof import('~icons/ep/arrow-down')['default']
     IEpExpand: typeof import('~icons/ep/expand')['default']
     IEpFold: typeof import('~icons/ep/fold')['default']
+    QueryTable: typeof import('./src/components/QueryTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SubItem: typeof import('./src/components/SubItem.vue')['default']
