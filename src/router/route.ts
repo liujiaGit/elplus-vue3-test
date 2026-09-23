@@ -34,12 +34,56 @@ export const dynamicRoute : Array<RouteRecordRaw> = [
 					role: ['01', '02'],// 01-system ,02-admin
 				}
 			},
+      {
+        path:'/system',
+        name:'System',
+        component:()=>import('@/layout/routerView/parent.vue'),
+        redirect:'/menu',
+        meta: {
+					title: '系统设置',
+					isLink: false,
+					icon: 'Guide',
+					role: ['01'],
+				},
+        children:[
+          {
+            path: '/menu',
+				    name: 'Menu',
+				    component: () => import('@/views/ContentPage/Menu.vue'),
+				    meta: {
+					    title: '菜单权限',
+					    icon: 'House',
+					    role: ['01'],
+				    }
+          },
+          {
+            path: '/user',
+				    name: 'User',
+				    component: () => import('@/views/ContentPage/User.vue'),
+				    meta: {
+					    title: '用户管理',
+					    icon: 'House',
+					    role: ['01'],
+				    }
+          },
+        ]
+      },
 			{
 				path: '/paginationTest',
 				name: 'PaginationTest',
 				component: () => import('@/views/ContentPage/PaginationTest/index.vue'),
 				meta: {
 					title: '分页',
+					icon: 'House',
+					role: ['01', '02'],
+				}
+			},
+      {
+				path: '/testSearchComponent',
+				name: 'TestSearchComponent',
+				component: () => import('@/views/ContentPage/TestSearchComponent.vue'),
+				meta: {
+					title: '查询组件',
 					icon: 'House',
 					role: ['01', '02'],
 				}
@@ -51,13 +95,13 @@ export const dynamicRoute : Array<RouteRecordRaw> = [
 				meta: {
 					title: '树形选择',
 					icon: 'Operation',
-					role: ['01', '02'],
+					role: ['01'],
 				}
 			},
 			{
 				path: '/popoverTest',
 				name: 'PopoverTest',
-				component: () => import('@/layout/routerView/parent.vue'),
+				component: () => import('@/views/ContentPage/PopoverTest.vue'),
 				meta: {
 					title: '弹出框',
 					icon: 'Notification',

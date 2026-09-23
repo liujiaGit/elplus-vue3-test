@@ -4,7 +4,7 @@
       <div class="wel float-right">
         欢迎您，
         <img src="@/assets/img/8.jpg" />
-        <span class="wel-name">{{ username }}</span>
+        <span class="wel-name">{{ userName }}</span>
         <el-icon><i-ep-arrow-down /></el-icon>
       </div>
     </template>
@@ -20,7 +20,7 @@ import { useUserStore } from "@/stores/user";
 const userStore = useUserStore();
 let $router = useRouter();
 let userInfo = JSON.parse(localStorage.getItem("userInfo"));
-let username = userInfo.username;
+let userName = userInfo.userName;
 
 const toPerson = () => {
   $router.push("/personInfo");

@@ -43,9 +43,8 @@ import { useUserStore } from '@/stores/user'
 const flagStore = useFlagStore()
 const userStore = useUserStore()
 const asyncRoutesList = userStore.asyncRoutesList
-let $router = useRouter()
 let $route = useRoute()
-let menuList = asyncRoutesList[0].children
+let menuList = computed(()=>asyncRoutesList[0].children)
 // 当前高亮菜单
 const activeMenu = computed(() => $route.path)
 /**

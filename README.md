@@ -40,3 +40,6 @@ npm run dev
 ```sh
 npm run build
 ```
+### 开发遇到的问题
+1、动态菜单问题
+  

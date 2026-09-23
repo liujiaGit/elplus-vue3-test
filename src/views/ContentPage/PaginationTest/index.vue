@@ -1,8 +1,11 @@
 <template>
 	<div class="pagination-page">
 		<div class="top-search">
-			<el-input :input="perName" placeholder="请输入人员名称"></el-input>
-			<el-button type="primary" :icon="Search" @click="">查询</el-button>
+      <el-text type="primary">上级部门名称</el-text>
+			<el-input v-model="queryParam.lastRoleName" clearable placeholder="请输入上级部门名称"></el-input>
+      <el-text type="primary">人员名称</el-text>
+			<el-input v-model="queryParam.perName" clearable placeholder="请输入人员名称"></el-input>
+			<el-button type="primary" :icon="Search" @click="handleSearch">查询</el-button>
 			<el-button type="primary" :icon="FolderAdd" @click="">新增</el-button>
 		</div>
 		<div v-if="tableData !== '' && tableData !== null && tableData !== undefined">
@@ -42,13 +45,51 @@
 	// 引入组件
 	import Dialog from './Dialog.vue'
 
-	const perName = ref('')
 	// 弹窗显示状态
 	const isShowDialog = ref(false)
 	// 当前选中行数据
 	const currentRow = ref({})
 
-	// 修改按钮点击
+	// 列表查询--分页功能
+	const tableData = ref([])
+	const currentPage = ref(1) // 当前页
+	const total = ref(0) // 总条数
+	const pageSize = ref(5) // 每页几条数据
+  const queryParam = reactive({lastRoleName: '', perName: ''})
+	async function getBranchPageList(){
+    BranchApi.getBranchPageList(queryParam).then((res) => {
+		if (res.code === "200") {
+			tableData.value = res.data.list
+			total.value = res.data.total
+			currentPage.value = res.data.pageNum
+		} else {
+			ElMessage.error(res.msg)
+		}
+	})
+  } 
+  onMounted(()=>{
+    getBranchPageList()
+  })
+  function handleSearch(){
+    getBranchPageList()
+  }
+	// 分页逻辑处理函数
+	const paginatedData = computed(() => {
+		const start = (currentPage.value - 1) * pageSize.value;
+		const end = start + pageSize.value;
+		return tableData.value.slice(start, end);
+	});
+	// 处理每页条数变化事件
+	const handleSizeChange = (newSize) => {
+		pageSize.value = newSize;
+		currentPage.value = 1; // 重置到第一页
+	};
+
+	// 处理当前页码变化事件
+	const handleCurrentChange = (newPage) => {
+		currentPage.value = newPage;
+	};
+  	// 修改按钮点击
 	const handleEdit = (row) => {
 		// 深拷贝数据，避免直接修改原数据
 		currentRow.value = JSON.parse(JSON.stringify(row))
@@ -94,37 +135,6 @@
 		}).catch(() => {})
 	}
 
-	// 列表查询--分页功能
-	const tableData = ref([])
-	const currentPage = ref(1) // 当前页
-	const total = ref(0) // 总条数
-	const pageSize = ref(5) // 每页几条数据
-	const getBranchPageList = BranchApi.getBranchPageList().then((res) => {
-		const reponseInfo = res.data
-		if (res.code === "200") {
-			tableData.value = reponseInfo.list
-			total.value = reponseInfo.total
-			currentPage.value = reponseInfo.pageNum
-		} else {
-			ElMessage.error(res.msg)
-		}
-	})
-	// 分页逻辑处理函数
-	const paginatedData = computed(() => {
-		const start = (currentPage.value - 1) * pageSize.value;
-		const end = start + pageSize.value;
-		return tableData.value.slice(start, end);
-	});
-	// 处理每页条数变化事件
-	const handleSizeChange = (newSize) => {
-		pageSize.value = newSize;
-		currentPage.value = 1; // 重置到第一页
-	};
-
-	// 处理当前页码变化事件
-	const handleCurrentChange = (newPage) => {
-		currentPage.value = newPage;
-	};
 </script>
 
 <style scoped lang="scss">

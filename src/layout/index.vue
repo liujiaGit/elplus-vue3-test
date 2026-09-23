@@ -2,7 +2,7 @@
 	<div class="common-layout">
 		<el-container>
 			<!-- 左侧路由树右侧页面，要注意右侧页面路由配置在layout布局的子路由下children -->
-			<el-aside :width="flagStore.isCollapse ? '4%' : '15%'">
+			<el-aside :width="flagStore.isCollapse ? '6%' : '15%'">
 				<AsidePage></AsidePage>
 			</el-aside>
 			<el-container class="content">

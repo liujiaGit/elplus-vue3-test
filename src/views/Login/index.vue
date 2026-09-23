@@ -43,13 +43,12 @@ const login = async (formVal) => {
     };
     //调接口
     const userStore = useUserStore();
-    await userStore.login(params);
-    $router.replace("/layout");
+    const ok = await userStore.login(params);
+    if (ok) {
+      $router.replace("/home");
+    }
   } else {
-    ElMessage({
-      type: "error",
-      message: "请输入正确信息!",
-    });
+    ElMessage.error("请输入正确信息!")
   }
 };
 
